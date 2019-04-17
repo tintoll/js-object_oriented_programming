@@ -1,16 +1,3 @@
-# js-object_oriented_programming
-
-- Object : 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인것.
-
-
-
-### Prototype 사용 이유
-
-1. 공통적으로 기능이나 속성을 정의할수 있다. 
-2. 객체 생성시 prototype으로 정의된 메소드는 한번 생성되기때문에 메모리를 절약할 수 있다. 
-
-```javascript
-
 function Person(name, first, second) {
   this.name = name;
   this.first = first;
@@ -32,5 +19,3 @@ kim.sum = function() {
 
 console.log(lee.sum());
 console.log(kim.sum());
-```
-
