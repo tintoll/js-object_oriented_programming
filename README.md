@@ -1,3 +1,8 @@
+---
+
+typora-root-url: ./prototype-vs-__proto__.png
+---
+
 # js-object_oriented_programming
 
 - Object : 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인것.
@@ -98,4 +103,21 @@ console.log("sum.call(lee) : ", sum.call(lee, " : "));
 var kimSum = sum.bind(kim, "-->");
 
 ```
+
+
+
+### prototype vs \_\_proto\_\_
+
+```javascript
+// 둘다 동일한 것이다. 즉 함수는 객체다. 객체이기때문에 프로퍼티를 가질수 있다.
+function Person() {}
+var Person = new Function(); 
+
+```
+
+Person 객체가 생성되면 Persons' prototype 객체가 또 생긴다. 그래서 prototype프로퍼티로 Person;s prototype객체를 가르키고 있다. (두개는 상호 참조한다.)
+
+\_\_proto\_\_ 는  Person을 이용해서 생성된 object의 prototype을 참조하는 프로퍼티이다. 
+
+<img src="./prototype-vs-__proto__.png" />
 
