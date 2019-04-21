@@ -121,3 +121,76 @@ Person 객체가 생성되면 Persons' prototype 객체가 또 생긴다. 그래
 
 <img src="./prototype-vs-__proto__.png" />
 
+
+
+
+
+### class vs fuction 코드 비교
+
+#### ES6
+
+```javascript
+class Person {
+  constructor(name, first, second) {
+    this.name = name;
+    this.first = first;
+    this.second = second;
+  }
+  sum() {
+    return "class : " + (this.first + this.second);
+  }
+}
+class PersonPlus extends Person {
+  constructor(name, first, second, third) {
+    super(name, first, second);
+    this.third = third;
+  }
+  sum() {
+    return super.sum() + this.third;
+  }
+  avg() {
+    return (this.first + this.second + this.third) / 3;
+  }
+}
+
+var lee = new PersonPlus("lee", 10, 30, 40);
+
+console.log(lee.sum());
+console.log(lee.avg());
+
+```
+
+#### ES5
+
+```javascript
+function Person(name, first, second) {
+  this.name = name;
+  this.first = first;
+  this.second = second;
+}
+
+Person.prototype.sum = function() {
+  return this.first + this.second;
+};
+
+function PersonPlus(name, first, second, third) {
+  Person.call(this, name, first, second);
+  this.third = third;
+}
+
+// 비표준이라서 사용을 지향하지 않는다.
+// PersonPlus.prototype.__proto__ = Person.prototype;
+// 표준
+PersonPlus.prototype = Object.create(Person.prototype);
+PersonPlus.prototype.constuctor = PersonPlus;
+PersonPlus.prototype.avg = function() {
+  return (this.first + this.second + this.third) / 3;
+};
+
+var lee = new PersonPlus("lee", 10, 30, 40);
+
+console.log(lee.sum());
+console.log(lee.avg());
+
+```
+
